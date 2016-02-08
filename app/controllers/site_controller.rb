@@ -1,5 +1,11 @@
 class SiteController < ApplicationController
 
-  def index
+  def index; end
+
+  def save_game 
   end
+
+  def delete_game
+  end
+
 end
