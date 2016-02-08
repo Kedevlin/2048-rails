@@ -23,7 +23,8 @@ GameManager.prototype.restart = function () {
 
 // Save the game -- in progress
 GameManager.prototype.save = function () {
-  console.log(this);
+  console.log(this.serialize());
+  // send this serialized item to the api endpoint?
 };
 
 // Keep playing after winning (allows going over 2048)
