@@ -8,4 +8,8 @@ class SiteController < ApplicationController
   def delete_game
   end
 
+  def leaderboard
+    
+  end
+
 end
