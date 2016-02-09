@@ -2,6 +2,6 @@
   <% # add check for if @current_user %>
   <%= link_to 'Sign Up', '/auth/github'  %> /
   <%= link_to 'Login', '/auth/github'  %> /
-  <%= link_to 'Log Out', root_path  %> /
+  <%= link_to 'Log Out', logout_path, method: :delete  %> /
   <%= link_to  'Play 2048', root_path %>
 </div>
