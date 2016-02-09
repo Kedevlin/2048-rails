@@ -26,8 +26,9 @@ GameManager.prototype.save = function () {
   console.log(this.serialize());
   // send this serialized item to the api endpoint?
   var url = '/save-game';
-  $.post(url, this.serialize(), function (data) {
-    console.log(data);
+  $.post({
+    url: url,
+    data: this.serialize(),
   })
   .done(function () {
     console.log('DONE');
