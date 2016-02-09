@@ -88,19 +88,23 @@ GameManager.prototype.isGameTerminated = function () {
 
 // Set up the game
 GameManager.prototype.setup = function (gameState) {
-  console.log("gameState in setup", gameState);
   var previousState = this.storageManager.getGameState();
-
   // Load a saved gameState if this parameter is available
   if (gameState) {
     this.grid        = new Grid(gameState.grid.size,
                                 gameState.grid.cells); // Reload grid
-    this.score       = gameState.score;
-    this.over        = gameState.over;
-    this.won         = gameState.won;
+    this.score       = parseInt(gameState.score);
+    if (gameState.over === "false") {
+      this.over = false;
+    } else {
+      this.over        = gameState.over;
+    }
+    if (gameState.won === "false") {
+      this.won = false;
+    } else {
+      this.won         = gameState.won;
+    }
     this.keepPlaying = gameState.keepPlaying;
-    console.log("grid in setup", this.grid);
-    console.log(this);
   }
   // Reload the game from a previous game if present
   else if (previousState) {
