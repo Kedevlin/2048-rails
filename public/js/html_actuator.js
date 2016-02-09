@@ -132,6 +132,10 @@ HTMLActuator.prototype.message = function (won) {
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
 };
 
+HTMLActuator.prototype.updateLeaderboard = function () {
+  console.log('leaderboard');
+};
+
 HTMLActuator.prototype.clearMessage = function () {
   // IE only takes one value to remove at a time.
   this.messageContainer.classList.remove("game-won");

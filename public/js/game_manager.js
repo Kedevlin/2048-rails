@@ -103,6 +103,8 @@ GameManager.prototype.setup = function (gameState) {
 
   // Update the actuator
   this.actuate();
+
+  // Update Leaderboard
 };
 
 // Set up the initial tiles to start the game with
@@ -143,6 +145,9 @@ GameManager.prototype.actuate = function () {
     terminated: this.isGameTerminated()
   });
 
+  // updating the Leaderboard at game setup
+  
+  this.actuator.updateLeaderboard();
 };
 
 // Represent the current game as an object
