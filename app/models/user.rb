@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :games
   validates :uid, presence: true
 
   def self.find_or_create_from_omniauth(auth_hash)

@@ -8,7 +8,6 @@ class SiteController < ApplicationController
     game = Game.create(
       :state => params["state"]
       )
-      binding.pry
       redirect_to root_path
 
     # render :json => {"something" => "else"}
