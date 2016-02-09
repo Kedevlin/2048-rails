@@ -5,7 +5,8 @@ class SiteController < ApplicationController
 
   def save_game
     game = Game.create(
-      :state => params["state"]
+      :state => params["state"],
+      :user_id => @current_user.id
       )
     redirect_to root_path
   end
