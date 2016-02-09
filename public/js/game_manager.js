@@ -23,7 +23,7 @@ GameManager.prototype.restart = function () {
   this.setup();
 };
 
-// Save the game -- in progress
+// Save the game
 GameManager.prototype.save = function () {
   var currentState = this.storageManager.getGameState();
   var url = '/save-game';
@@ -31,7 +31,6 @@ GameManager.prototype.save = function () {
     {
       state: currentState
     }
-    // function() { console.log(data); }
   );
   console.log(currentState);
 
@@ -62,7 +61,16 @@ GameManager.prototype.loadAllGames = function () {
 
 // Load particular game to start playing
 GameManager.prototype.loadGame = function () {
-  console.log("Trying to load a game");
+  var url = '/load-game/1';
+  var self = this;
+  $.get(url)
+  .done(function (data) {
+    console.log(data.state.grid.size);
+    console.log(data.state.grid.cells);
+    console.log(data.state.score);
+    self.setup(data.state);
+    console.log(self.storageManager.getGameState());
+  });
 };
 
 
@@ -79,6 +87,7 @@ GameManager.prototype.isGameTerminated = function () {
 
 // Set up the game
 GameManager.prototype.setup = function (gameState) {
+  console.log("gameState in setup", gameState);
   var previousState = this.storageManager.getGameState();
 
   // Load a saved gameState if this parameter is available
@@ -89,6 +98,8 @@ GameManager.prototype.setup = function (gameState) {
     this.over        = gameState.over;
     this.won         = gameState.won;
     this.keepPlaying = gameState.keepPlaying;
+    console.log("grid in setup", this.grid);
+    console.log(this);
   }
   // Reload the game from a previous game if present
   else if (previousState) {

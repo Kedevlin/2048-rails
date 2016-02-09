@@ -17,6 +17,11 @@ class SiteController < ApplicationController
     render :json => games, :only => :state
   end
 
+  def load_game
+    game = Game.find(params[:id])
+    render :json => game, :only => :state
+  end
+
   def delete_game
   end
 
