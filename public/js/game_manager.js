@@ -31,23 +31,20 @@ GameManager.prototype.save = function () {
     {
       state: currentState
     }
-    // function() { console.log(data); }
   );
-  console.log(currentState);
-
 };
 
 // Load list of all saved games to choose one to play
 GameManager.prototype.loadAllGames = function () {
+  var self = this;
   var url = '/all-games';
+
   $.get(url)
   .done(function (data) {
     addGames(data);
   });
-
   var games = [];
   function addGames(input) {
-    console.log(input);
     for (var i = 0; i < input.length; i++) {
       games.push(input[i].state);
     }
@@ -55,9 +52,12 @@ GameManager.prototype.loadAllGames = function () {
     var savedGamesHTML = "";
     for (var j = 0; j < games.length; j++) {
       savedGamesHTML += "<p>Game with score: " + games[j].score + " " + "<a class=\"load-game-button\" id="+j+">Load This Game</a></p>";
+
     }
     $(".saved-games").html(savedGamesHTML);
+    self.inputManager.bindButtonPress(".load-game-button", self.inputManager.loadGame);
   }
+
 };
 
 // Load particular game to start playing

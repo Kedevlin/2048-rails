@@ -73,7 +73,6 @@ KeyboardInputManager.prototype.listen = function () {
   this.bindButtonPress(".restart-button", this.restart);
   this.bindButtonPress(".save-button", this.save);
   this.bindButtonPress(".load-all-button", this.loadAllGames);
-  this.bindButtonPress(".load-game-button", this.loadGame);
   this.bindButtonPress(".keep-playing-button", this.keepPlaying);
 
   // Respond to swipe events
