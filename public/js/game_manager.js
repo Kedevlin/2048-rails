@@ -24,15 +24,15 @@ GameManager.prototype.restart = function () {
 // Save the game -- in progress
 GameManager.prototype.save = function () {
   currentState = this.storageManager.getGameState();
-  console.log(currentState);
+  console.log(currentState.grid);
 
   // console.log(this.serialize());
   // send this serialized item to the api endpoint?
   var url = '/save-game';
-  console.log(currentState.score);
+  // console.log(currentState.score);
   $.post(url,
     {
-      score: currentState.score,
+      state: currentState
     },
     function(){ alert("Success! score: " + currentState.score); }
   );
@@ -46,7 +46,7 @@ GameManager.prototype.save = function () {
   // });
 
 
-  //this.loadGame(currentState);
+  // this.loadGame(currentState);
 
 };
 
