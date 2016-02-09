@@ -23,14 +23,16 @@ GameManager.prototype.restart = function () {
 
 // Save the game -- in progress
 GameManager.prototype.save = function () {
-  currentState = this.storageManager.getGameState();
+  var currentState = this.storageManager.getGameState();
   var url = '/save-game';
   $.post(url,
     {
       state: currentState
-    },
-    function(){ alert("Success! score: " + currentState.score); }
+    }
+    // function() { console.log(data); }
   );
+  console.log(currentState);
+
 };
 
 // Load saved game
