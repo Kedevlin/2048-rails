@@ -39,10 +39,9 @@ GameManager.prototype.save = function () {
 
 // Load list of all saved games to choose one to play
 GameManager.prototype.loadAllGames = function () {
-  // $("game-container").hide();
   var url = '/all-games';
   $.get(url)
-  .done(function(data) {
+  .done(function (data) {
     addGames(data);
   });
 
@@ -53,19 +52,17 @@ GameManager.prototype.loadAllGames = function () {
       games.push(input[i].state);
     }
     $("grid-container").hide();
+    var savedGamesHTML = "";
     for (var j = 0; j < games.length; j++) {
-      $(".saved-games").append("<p>Game with score: " + games[j].score + " " + "<a class=\"load-game-button\">Load This Game</a></p");
+      savedGamesHTML += "<p>Game with score: " + games[j].score + " " + "<a class=\"load-game-button\" id="+j+">Load This Game</a></p>";
     }
-
+    $(".saved-games").html(savedGamesHTML);
   }
-
-
-  // this.setup();
 };
 
 // Load particular game to start playing
-GameManager.prototype.loadGame = function (gameState) {
-  this.setup(gameState);
+GameManager.prototype.loadGame = function () {
+  console.log("Trying to load a game");
 };
 
 
