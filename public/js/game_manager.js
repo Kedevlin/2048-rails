@@ -23,18 +23,40 @@ GameManager.prototype.restart = function () {
 
 // Save the game -- in progress
 GameManager.prototype.save = function () {
-  console.log(this.serialize());
+  currentState = this.storageManager.getGameState();
+  console.log(currentState);
+
+  // console.log(this.serialize());
   // send this serialized item to the api endpoint?
   var url = '/save-game';
-  $.post({
-    url: url,
-    data: this.serialize(),
-  })
-  .done(function () {
-    console.log('DONE');
-  });
+
+  // console.log(url);
+  // console.log(currentState.score);
+  // $.post(url,
+  //   {
+  //     score: currentState.score,
+  //   },
+  //   function(){ alert("Success!"); }
+  // );
+
+  // $.post({
+  //   url: url,
+  //   data: this.serialize(),
+  // })
+  // .done(function () {
+  //   console.log('DONE');
+  // });
+
+
+  //this.loadGame(currentState);
 
 };
+
+// Load saved game
+GameManager.prototype.loadGame = function (gameState) {
+  this.setup(gameState);
+};
+
 
 // Keep playing after winning (allows going over 2048)
 GameManager.prototype.keepPlaying = function () {
@@ -48,11 +70,20 @@ GameManager.prototype.isGameTerminated = function () {
 };
 
 // Set up the game
-GameManager.prototype.setup = function () {
+GameManager.prototype.setup = function (gameState) {
   var previousState = this.storageManager.getGameState();
 
+  // Load a saved gameState if this parameter is available
+  if (gameState) {
+    this.grid        = new Grid(gameState.grid.size,
+                                gameState.grid.cells); // Reload grid
+    this.score       = gameState.score;
+    this.over        = gameState.over;
+    this.won         = gameState.won;
+    this.keepPlaying = gameState.keepPlaying;
+  }
   // Reload the game from a previous game if present
-  if (previousState) {
+  else if (previousState) {
     this.grid        = new Grid(previousState.grid.size,
                                 previousState.grid.cells); // Reload grid
     this.score       = previousState.score;
