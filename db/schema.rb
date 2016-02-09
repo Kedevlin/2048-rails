@@ -11,14 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160208233532) do
-
-  create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "uid"
-=======
 ActiveRecord::Schema.define(version: 20160208233912) do
 
   create_table "games", force: :cascade do |t|
@@ -28,7 +20,12 @@ ActiveRecord::Schema.define(version: 20160208233912) do
     t.boolean  "keepPlaying"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
->>>>>>> api-fun
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "uid"
   end
 
 end
