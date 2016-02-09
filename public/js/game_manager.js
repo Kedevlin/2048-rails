@@ -39,7 +39,28 @@ GameManager.prototype.save = function () {
 
 // Load list of all saved games to choose one to play
 GameManager.prototype.loadAllGames = function () {
-  this.setup(gameState);
+  // $("game-container").hide();
+  var url = '/all-games';
+  $.get(url)
+  .done(function(data) {
+    addGames(data);
+  });
+
+  var games = [];
+  function addGames(input) {
+    console.log(input);
+    for (var i = 0; i < input.length; i++) {
+      games.push(input[i].state);
+    }
+    $("grid-container").hide();
+    for (var j = 0; j < games.length; j++) {
+      $(".saved-games").append("<p>Game with score: " + games[j].score + " " + "<a class=\"load-game-button\">Load This Game</a></p");
+    }
+
+  }
+
+
+  // this.setup();
 };
 
 // Load particular game to start playing

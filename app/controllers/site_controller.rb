@@ -12,6 +12,11 @@ class SiteController < ApplicationController
     redirect_to root_path
   end
 
+  def load_all_games
+    games = current_user.games
+    render :json => games, :only => :state
+  end
+
   def delete_game
   end
 
