@@ -29,15 +29,13 @@ GameManager.prototype.save = function () {
   // console.log(this.serialize());
   // send this serialized item to the api endpoint?
   var url = '/save-game';
-
-  // console.log(url);
-  // console.log(currentState.score);
-  // $.post(url,
-  //   {
-  //     score: currentState.score,
-  //   },
-  //   function(){ alert("Success!"); }
-  // );
+  console.log(currentState.score);
+  $.post(url,
+    {
+      score: currentState.score,
+    },
+    function(){ alert("Success! score: " + currentState.score); }
+  );
 
   // $.post({
   //   url: url,
@@ -146,7 +144,7 @@ GameManager.prototype.actuate = function () {
   });
 
   // updating the Leaderboard at game setup
-  
+
   this.actuator.updateLeaderboard();
 };
 

@@ -3,10 +3,11 @@ class SiteController < ApplicationController
   def index; end
 
   def save_game
-    game = Game.create(
-      self.score = params["score"]
-      )
-    render :json => {"something" => "else"}
+    redirect_to root_path
+    # game = Game.create(
+    #   self.score = params["score"]
+    #   )
+    # render :json => {"something" => "else"}
   end
 
   def delete_game
