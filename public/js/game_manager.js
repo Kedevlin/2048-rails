@@ -9,6 +9,8 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("save", this.save.bind(this));
+  this.inputManager.on("loadAllGames", this.loadAllGames.bind(this));
+  this.inputManager.on("loadGame", this.loadGame.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
 
   this.setup();
@@ -35,7 +37,12 @@ GameManager.prototype.save = function () {
 
 };
 
-// Load saved game
+// Load list of all saved games to choose one to play
+GameManager.prototype.loadAllGames = function () {
+  this.setup(gameState);
+};
+
+// Load particular game to start playing
 GameManager.prototype.loadGame = function (gameState) {
   this.setup(gameState);
 };

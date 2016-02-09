@@ -72,6 +72,8 @@ KeyboardInputManager.prototype.listen = function () {
   this.bindButtonPress(".retry-button", this.restart);
   this.bindButtonPress(".restart-button", this.restart);
   this.bindButtonPress(".save-button", this.save);
+  this.bindButtonPress(".load-all-button", this.save);
+  this.bindButtonPress(".load-game-button", this.save);
   this.bindButtonPress(".keep-playing-button", this.keepPlaying);
 
   // Respond to swipe events
@@ -138,6 +140,15 @@ KeyboardInputManager.prototype.save = function (event) {
   this.emit("save");
 };
 
+KeyboardInputManager.prototype.save = function (event) {
+  event.preventDefault();
+  this.emit("loadAllGames");
+};
+
+KeyboardInputManager.prototype.save = function (event) {
+  event.preventDefault();
+  this.emit("loadGame");
+};
 
 KeyboardInputManager.prototype.keepPlaying = function (event) {
   event.preventDefault();
