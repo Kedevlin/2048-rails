@@ -12,6 +12,11 @@ class SiteController < ApplicationController
     redirect_to root_path
   end
 
+  def load_game
+    game = Gaem.find(params[:id])
+    redirect_to root_path
+  end
+
   def delete_game
   end
 

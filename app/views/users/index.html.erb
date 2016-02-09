@@ -1,0 +1,7 @@
+<h1>All My Gamez</h1>
+
+<% @games.each do |game| %>
+  <%= game.id %><br>
+  <%= game.score %><br>
+  <%= link_to 'Load Game', load_game_path  %>
+<% end %>

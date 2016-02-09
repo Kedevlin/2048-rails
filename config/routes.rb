@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   # api routes
   get '/leaderboard' => 'site#leaderboard'
+  get '/load-game/:id' => 'site#load_game'
   post '/save-game' => 'site#save_game'
   
 
