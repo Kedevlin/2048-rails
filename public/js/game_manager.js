@@ -55,7 +55,7 @@ GameManager.prototype.loadAllGames = function () {
 
     }
     $(".saved-games").html(savedGamesHTML);
-    self.inputManager.bindButtonPress(".load-game-button", self.inputManager.loadGame);
+    self.inputManager.bindAllButtonPress(".load-game-button", self.inputManager.loadGame);
   }
 
 };

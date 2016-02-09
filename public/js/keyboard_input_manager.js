@@ -159,3 +159,11 @@ KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
 };
+
+KeyboardInputManager.prototype.bindAllButtonPress = function (selector, fn) {
+  var buttons = document.querySelectorAll(selector);
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", fn.bind(this));
+    buttons[i].addEventListener(this.eventTouchend, fn.bind(this));
+  }
+};
