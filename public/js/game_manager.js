@@ -46,12 +46,11 @@ GameManager.prototype.loadAllGames = function () {
   var games = [];
   function addGames(input) {
     for (var i = 0; i < input.length; i++) {
-      games.push(input[i].state);
+      games.push(input[i]);
     }
-    $("grid-container").hide();
     var savedGamesHTML = "";
     for (var j = 0; j < games.length; j++) {
-      savedGamesHTML += "<p>Game with score: " + games[j].score + " " + "<a class=\"load-game-button\" id="+j+">Load This Game</a></p>";
+      savedGamesHTML += "<p>Game with score: " + games[j].state.score + " " + "<a class=\"load-game-button\" id="+games[j].id+">Load This Game</a></p>";
 
     }
     $(".saved-games").html(savedGamesHTML);

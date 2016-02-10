@@ -14,7 +14,7 @@ class SiteController < ApplicationController
 
   def load_all_games
     games = current_user.games
-    render :json => games, :only => :state
+    render :json => games
   end
 
   def load_game
