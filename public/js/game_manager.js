@@ -64,7 +64,7 @@ GameManager.prototype.loadAllGames = function () {
 GameManager.prototype.loadGame = function (id) {
   console.log("Trying to load game with id: " + id);
   var self = this;
-  var url = '/load-game/1';
+  var url = '/load-game/' + id;
   $.get(url)
   .done(function (data) {
     self.setup(data.state);
