@@ -173,12 +173,22 @@ GameManager.prototype.addRandomTile = function () {
 
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function () {
+  var self = this;
+
+  // getting Best Score from logged in user's data
+
+  this.storageManager.getBestScore()
+  .done(function (scoreData) {
+    if (scoreData < self.score) {
+      self.storageManager.setBestScore(self.score);
+    }
+  });
+
+  // OLD CODE
   //
-  // CHANGE WHERE BEST SCORE IS COMING FROM
-  //
-  if (this.storageManager.getBestScore() < this.score) {
-    this.storageManager.setBestScore(this.score);
-  }
+  // if (this.storageManager.getBestScore() < this.score) {
+  //   this.storageManager.setBestScore(this.score);
+  // }
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
@@ -187,14 +197,17 @@ GameManager.prototype.actuate = function () {
     this.storageManager.setGameState(this.serialize());
   }
 
-  this.actuator.actuate(this.grid, {
-    score:      this.score,
-    over:       this.over,
-    won:        this.won,
-    bestScore:  this.storageManager.getBestScore(),
-    terminated: this.isGameTerminated()
-  });
+  this.storageManager.getBestScore()
+  .done(function (scoreData) {
+    self.actuator.actuate(self.grid, {
+      score:      self.score,
+      bestScore:  scoreData,
+      over:       self.over,
+      won:        self.won,
+      terminated: self.isGameTerminated()
+    });
 
+  });
   // updating the Leaderboard when board is updated
   this.updateLeaderboard();
 };

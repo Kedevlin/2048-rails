@@ -40,13 +40,26 @@ LocalStorageManager.prototype.localStorageSupported = function () {
 };
 
 // Best score getters/setters
+//
+// SHOULD BE MOVED TO API STORAGE FILE
+
 LocalStorageManager.prototype.getBestScore = function () {
-  return this.storage.getItem(this.bestScoreKey) || 0;
+  var url = '/best-score';
+  return $.get(url, {});
 };
 
 LocalStorageManager.prototype.setBestScore = function (score) {
-  this.storage.setItem(this.bestScoreKey, score);
+  var url = '/best-score';
+  var newBest = score;
+  $.post(url, 
+  {
+    score: newBest
+  });
+  // ORIGINAL CODE
+  //
+  // this.storage.setItem(this.bestScoreKey, score);
 };
+
 
 // Game state getters/setters and clearing
 LocalStorageManager.prototype.getGameState = function () {
