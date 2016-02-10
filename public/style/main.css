@@ -558,6 +558,14 @@ hr {
   text-align: center;
   float: right; }
 
+.leaderboard {
+  margin-top: 10px;
+}
+
+.leader {
+/*  display: inline-block;*/
+}
+
 
 .game-explanation {
   margin-top: 50px; }
