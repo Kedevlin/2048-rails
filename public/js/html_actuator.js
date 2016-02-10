@@ -138,7 +138,6 @@ HTMLActuator.prototype.updateLeaderboard = function (leaders) {
     leaderHTML += '<div class="leader"> / <strong> Leader ID: ' + leaders[i].uid + '</strong> -- score: ' + leaders[i].high_score + ' /  </div>';
   }
   $('.leaderboard').html(leaderHTML);
-  console.log("done")
 };
 
 HTMLActuator.prototype.clearMessage = function () {
