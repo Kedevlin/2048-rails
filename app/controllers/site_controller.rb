@@ -23,6 +23,8 @@ class SiteController < ApplicationController
   end
 
   def delete_game
+    Game.destroy(params[:id])
+    render :json => []
   end
 
   def leaderboard

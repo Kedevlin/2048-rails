@@ -50,11 +50,16 @@ GameManager.prototype.loadAllGames = function () {
     }
     var savedGamesHTML = "";
     for (var j = 0; j < games.length; j++) {
-      savedGamesHTML += "<p>Game with score: " + games[j].state.score + " " + "<a class=\"load-game-button\" id="+games[j].id+">Load This Game</a></p>";
+      savedGamesHTML += "<p id="+games[j].id+">Game with score: " + games[j].state.score +
+      " <a class=\"load-game-button\">Load</a>" +
+      " <a class=\"delete-game-button\">Delete</a></p>";
     }
     $(".saved-games").html(savedGamesHTML);
-    $(".saved-games").click(function(){
-      self.loadGame(event.target.id);
+    $(".load-game-button").click(function(){
+      self.loadGame(event.target.parentElement.id);
+    });
+    $(".delete-game-button").click(function(){
+      self.deleteGame(event.target.parentElement.id);
     });
   }
 
@@ -62,13 +67,25 @@ GameManager.prototype.loadAllGames = function () {
 
 // Load particular game to start playing
 GameManager.prototype.loadGame = function (id) {
-  console.log("Trying to load game with id: " + id);
   var self = this;
   var url = '/load-game/' + id;
   $.get(url)
   .done(function (data) {
     self.setup(data.state);
   });
+};
+
+// delete a saved game
+GameManager.prototype.deleteGame = function (id) {
+  var url = '/delete-game/' + id;
+  $.ajax({
+   url: url,
+   type: 'DELETE',
+   success: function() {
+     $('#' + id).remove();
+   }
+  });
+
 };
 
 

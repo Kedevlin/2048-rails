@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   post '/save-game' => 'site#save_game'
   get '/all-games' => 'site#load_all_games'
   get '/load-game/:id' => 'site#load_game'
-
+  delete 'delete-game/:id' => 'site#delete_game'
 
 end
