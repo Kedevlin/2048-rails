@@ -66,11 +66,7 @@ GameManager.prototype.loadGame = function () {
   var self = this;
   $.get(url)
   .done(function (data) {
-    console.log(data.state.grid.size);
-    console.log(data.state.grid.cells);
-    console.log(data.state.score);
     self.setup(data.state);
-    console.log(self.storageManager.getGameState());
   });
 };
 
