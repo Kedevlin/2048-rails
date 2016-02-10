@@ -23,7 +23,15 @@ class UsersController < ApplicationController
   end
 
   def best_score
-    score = User.find(params[:id]).score
+    score = @current_user.high_score
+    score = 0 if score.nil? 
+    render :json => score
+  end
+
+  def new_best_score
+    score = params[:score]
+    @current_user.high_score = score
+    @current_user.save
     render :json => score
   end
 

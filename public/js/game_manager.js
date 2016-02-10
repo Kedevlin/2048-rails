@@ -157,9 +157,19 @@ GameManager.prototype.actuate = function () {
   //
   // CHANGE WHERE BEST SCORE IS COMING FROM
   //
-  if (this.storageManager.getBestScore() < this.score) {
-    this.storageManager.setBestScore(this.score);
-  }
+  var self = this;
+  this.storageManager.getBestScore()
+  .done(function (scoreData) {
+    console.log("This is the getBestScore Data", scoreData);
+    if (scoreData < self.score) {
+      self.storageManager.setBestScore(self.score);
+    }
+  });
+
+
+  // if (this.storageManager.getBestScore() < this.score) {
+  //   this.storageManager.setBestScore(this.score);
+  // }
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
