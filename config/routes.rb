@@ -8,10 +8,10 @@ Rails.application.routes.draw do
 
   # api routes
   get '/leaderboard' => 'site#leaderboard'
-  post '/save-game' => 'site#save_game'
-  get '/all-games' => 'site#load_all_games'
-  get '/load-game/:id' => 'site#load_game'
-  get '/best-score/:id' => 'user#best_score'
+  post '/save-game' => 'users#save_game'
+  get '/all-games' => 'users#load_all_games'
+  get '/load-game/:id' => 'users#load_game'
+  get '/best-score/:id' => 'users#best_score'
 
 
 end
