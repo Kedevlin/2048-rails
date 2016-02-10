@@ -40,6 +40,7 @@ LocalStorageManager.prototype.localStorageSupported = function () {
 };
 
 // Best score getters/setters
+//
 // SHOULD BE MOVED TO API STORAGE FILE
 
 LocalStorageManager.prototype.getBestScore = function () {
@@ -53,12 +54,13 @@ LocalStorageManager.prototype.setBestScore = function (score) {
   $.post(url, 
   {
     score: newBest
-  })
-  .done(function (data) {
-    console.log("This is the best score I sent", data);
   });
+  // ORIGINAL CODE
+  //
   // this.storage.setItem(this.bestScoreKey, score);
 };
+
+
 // Game state getters/setters and clearing
 LocalStorageManager.prototype.getGameState = function () {
   var stateJSON = this.storage.getItem(this.gameStateKey);
