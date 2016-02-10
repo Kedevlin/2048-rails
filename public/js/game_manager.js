@@ -51,16 +51,18 @@ GameManager.prototype.loadAllGames = function () {
     var savedGamesHTML = "";
     for (var j = 0; j < games.length; j++) {
       savedGamesHTML += "<p>Game with score: " + games[j].state.score + " " + "<a class=\"load-game-button\" id="+games[j].id+">Load This Game</a></p>";
-
     }
     $(".saved-games").html(savedGamesHTML);
-    self.inputManager.bindAllButtonPress(".load-game-button", self.inputManager.loadGame);
+    $(".saved-games").click(function(){
+      self.loadGame(event.target.id);
+    });
   }
 
 };
 
 // Load particular game to start playing
-GameManager.prototype.loadGame = function () {
+GameManager.prototype.loadGame = function (id) {
+  console.log("Trying to load game with id: " + id);
   var self = this;
   var url = '/load-game/1';
   $.get(url)
