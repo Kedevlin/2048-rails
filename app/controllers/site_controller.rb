@@ -27,7 +27,7 @@ class SiteController < ApplicationController
 
   def leaderboard
     @leaders = User.order(:high_score).limit(3)
-    render :json  => @leaders, :only => [:uid, :high_score], :callback => 'updateLeaderboard'
+    render :json  => @leaders, :only => [:uid, :high_score]
   end
 
 end

@@ -62,11 +62,22 @@ GameManager.prototype.loadAllGames = function () {
 
 // Load particular game to start playing
 GameManager.prototype.loadGame = function () {
-  var url = '/load-game/1';
   var self = this;
+  var url = '/load-game/1';
   $.get(url)
   .done(function (data) {
     self.setup(data.state);
+  });
+};
+
+
+// get new information for Leaderboard
+GameManager.prototype.updateLeaderboard = function () {
+  var self = this;
+  var url = '/leaderboard';
+  $.get(url)
+  .done(function (data) {
+    self.actuator.updateLeaderboard(data);
   });
 };
 
@@ -123,8 +134,6 @@ GameManager.prototype.setup = function (gameState) {
 
   // Update the actuator
   this.actuate();
-
-  // Update Leaderboard
 };
 
 // Set up the initial tiles to start the game with
@@ -146,6 +155,9 @@ GameManager.prototype.addRandomTile = function () {
 
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function () {
+  //
+  // CHANGE WHERE BEST SCORE IS COMING FROM
+  //
   if (this.storageManager.getBestScore() < this.score) {
     this.storageManager.setBestScore(this.score);
   }
@@ -165,9 +177,8 @@ GameManager.prototype.actuate = function () {
     terminated: this.isGameTerminated()
   });
 
-  // updating the Leaderboard at game setup
-
-  this.actuator.updateLeaderboard();
+  // updating the Leaderboard when board is updated
+  this.updateLeaderboard();
 };
 
 // Represent the current game as an object

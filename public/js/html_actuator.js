@@ -132,8 +132,13 @@ HTMLActuator.prototype.message = function (won) {
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
 };
 
-HTMLActuator.prototype.updateLeaderboard = function () {
-  console.log('leaderboard');
+HTMLActuator.prototype.updateLeaderboard = function (leaders) {
+  var leaderHTML = "";
+  for (var i = 0; i < leaders.length; i++) {
+    leaderHTML += '<div class="leader">' + leaders[i].uid + ' -- ' + leaders[i].high_score + '</div>';
+  }
+  $('.leaderboard').html(leaderHTML);
+  console.log("done")
 };
 
 HTMLActuator.prototype.clearMessage = function () {
