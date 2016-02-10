@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post '/save-game' => 'users#save_game'
   get '/all-games' => 'users#load_all_games'
   get '/load-game/:id' => 'users#load_game'
-  get '/best-score/:id' => 'users#best_score'
-
+  get '/best-score' => 'users#best_score'
+  post '/best-score/:id' => 'users#new_best_score'
 
 end
