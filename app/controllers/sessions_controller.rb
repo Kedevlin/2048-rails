@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
         flash[:notice] = "Failed to save the user"
       end
     end
+    flash[:notice] = "You have been logged in. Play on!"
     redirect_to root_path
   end
 

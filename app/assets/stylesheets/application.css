@@ -3,10 +3,23 @@
   width: 1000px;
 }
 
+body {
+  margin-top: 0;
+}
+
 .navbar {
   display: block;
   width: 500px;
   text-align: right;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.flash-container {
+  display: block;
+  width: 500px;
+  height: 20px;
+  text-align: center;
   margin: 0 auto;
   margin-bottom: 10px;
 }

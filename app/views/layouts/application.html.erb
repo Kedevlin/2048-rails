@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="flash-container">
+    <% if !flash.empty? %>
+      <div class="flash">
+        <% flash.each do |key, value| %><%= value %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
   <div class="app-container">
     <div class="navbar">
       <%= render 'navbar' %>
