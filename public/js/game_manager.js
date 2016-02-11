@@ -70,7 +70,10 @@ GameManager.prototype.loadAllGames = function () {
       self.loadGame(event.target.parentElement.id);
     });
     $(".delete-game-button").click(function(){
-      self.deleteGame(event.target.parentElement.id);
+      var r = confirm("Are you sure you want to delete this game?");
+      if (r === true) {
+        self.deleteGame(event.target.parentElement.id);
+      }
     });
   }
 };
