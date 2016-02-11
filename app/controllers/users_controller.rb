@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def load_all_games
-    games = current_user.games
+    games = current_user.games.limit(3)
     render :json => games
   end
 

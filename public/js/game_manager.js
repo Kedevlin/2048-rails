@@ -58,11 +58,12 @@ GameManager.prototype.loadAllGames = function () {
       var day = date.getDate();
       var year = date.getFullYear();
 
-      savedGamesHTML += "<div class='saved-game' id=" + games[j].id + ">Score: " 
+      savedGamesHTML += "<div class='saved-game' id=" + games[j].id + 
+      "><strong>Score:</strong> " 
       + games[j].state.score + 
-      "<br>Saved on:" + month + "/" + day + "/" + year + 
+      "<br>" + month + "/" + day + "/" + year + 
       "<br><a class=\"load-game-button\">Load</a>" + 
-      "<br><a class=\"delete-game-button\">Delete</a></div>";
+      " / <a class=\"delete-game-button\">Delete</a></div><br>";
     }
     $(".saved-games").html(savedGamesHTML);
     $(".load-game-button").click(function(){
