@@ -1,6 +1,10 @@
 .app-container {
   margin: 0 auto;
-  width: 900px;
+  width: 1000px;
+}
+
+body {
+  margin-top: 0;
 }
 
 .navbar {
@@ -11,11 +15,20 @@
   margin-bottom: 10px;
 }
 
+.flash-container {
+  display: block;
+  width: 500px;
+  height: 20px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
 .leaderboard-container {
   display: inline-block;
   position: relative;
   bottom: 400px;
-  right: 50px;
+  right: 30px;
   width: 175px;
   text-align: right;
 }
@@ -28,14 +41,14 @@
 .saved-games-container {
   display: inline-block;
   width: 175px;
-/*  position: relative;
+  position: relative;
   bottom: 400px;
-  left: 50px;*/
+  left: 30px;
 }
 
 .saved-game {
   text-align: left;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .display-game {
