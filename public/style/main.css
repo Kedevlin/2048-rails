@@ -530,7 +530,14 @@ hr {
   text-align: center;
   float: right; }
 
+  h3 {
+    padding-top: 30%;
+  }
+
 .save-button {
+  position: absolute;
+  left: 12px;
+  top: 0px;
   display: inline-block;
   background: #8f7a66;
   border-radius: 3px;
