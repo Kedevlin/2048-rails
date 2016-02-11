@@ -31,6 +31,7 @@ GameManager.prototype.save = function () {
       state: currentState
     }
   );
+  alert("Game is saved!");
 };
 
 // Load list of all saved games to choose one to play
@@ -58,10 +59,10 @@ GameManager.prototype.loadAllGames = function () {
       var day = date.getDate();
       var year = date.getFullYear();
 
-      savedGamesHTML += "<div class='saved-game' id=" + games[j].id + ">Score: " 
-      + games[j].state.score + 
-      "<br>Saved on:" + month + "/" + day + "/" + year + 
-      "<br><a class=\"load-game-button\">Load</a>" + 
+      savedGamesHTML += "<div class='saved-game' id=" + games[j].id + ">Score: "
+      + games[j].state.score +
+      "<br>Saved on:" + month + "/" + day + "/" + year +
+      "<br><a class=\"load-game-button\">Load</a>" +
       "<br><a class=\"delete-game-button\">Delete</a></div>";
     }
     $(".saved-games").html(savedGamesHTML);
@@ -81,7 +82,7 @@ GameManager.prototype.loadGame = function (id) {
   $.get(url)
   .done(function (data) {
     self.setup(data.state);
-  }); 
+  });
 };
 
 // delete a saved game
