@@ -1,15 +1,44 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.app-container {
+  margin: 0 auto;
+  width: 900px;
+}
+
+.navbar {
+  display: block;
+  width: 500px;
+  text-align: right;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.leaderboard-container {
+  display: inline-block;
+  position: relative;
+  bottom: 400px;
+  right: 50px;
+  width: 175px;
+  text-align: right;
+}
+
+.leaderboard {
+  text-align: right;
+  font-size: 24px;
+}
+
+.saved-games-container {
+  display: inline-block;
+  width: 175px;
+/*  position: relative;
+  bottom: 400px;
+  left: 50px;*/
+}
+
+.saved-game {
+  text-align: left;
+  font-size: 18px;
+}
+
+.display-game {
+  display: inline-block;
+  width: 500px;
+}

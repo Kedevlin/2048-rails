@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def best_score
-    score = @current_user.high_score
+    score = @current_user.high_score if @current_user
     score = 0 if score.nil? 
     render :json => score
   end

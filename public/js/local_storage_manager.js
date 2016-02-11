@@ -55,6 +55,7 @@ LocalStorageManager.prototype.setBestScore = function (score) {
   {
     score: newBest
   });
+  
   // ORIGINAL CODE
   //
   // this.storage.setItem(this.bestScoreKey, score);

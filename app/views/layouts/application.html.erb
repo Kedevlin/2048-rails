@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'navbar' %>
-<%= yield %>
+  <div class="app-container">
+    <div class="navbar">
+      <%= render 'navbar' %>
+    </div>
+    <div class="leaderboard-container">
+      <h2>LEADERBOARD</h2>
+      <div class="leaderboard"></div>
+    </div>
+    <div class="display-game">
+      <%= yield %>
+    </div>
+    <div class="saved-games"></div>
+  </div>
+
 
 </body>
 </html>
