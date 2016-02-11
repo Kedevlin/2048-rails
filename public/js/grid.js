@@ -23,10 +23,15 @@ Grid.prototype.fromState = function (state) {
 
   for (var x = 0; x < this.size; x++) {
     var row = cells[x] = [];
-
     for (var y = 0; y < this.size; y++) {
       var tile = state[x][y];
-      row.push(tile ? new Tile(tile.position, tile.value) : null);
+      if (!tile) {
+        row.push(null);
+      } else {
+        tile.position.x = parseInt(tile.position.x);
+        tile.position.y = parseInt(tile.position.y);
+        row.push(new Tile(tile.position, parseInt(tile.value)));
+      }
     }
   }
 
