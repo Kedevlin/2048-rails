@@ -17,9 +17,12 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
 // Restart the game
 GameManager.prototype.restart = function () {
-  this.storageManager.clearGameState();
-  this.actuator.continueGame(); // Clear the game won/lost message
-  this.setup();
+  var r = confirm("Are you sure?\nAny unsaved games will be lost.");
+  if (r === true) {
+    this.storageManager.clearGameState();
+    this.actuator.continueGame(); // Clear the game won/lost message
+    this.setup();
+  }
 };
 
 // Save the game
@@ -82,10 +85,13 @@ GameManager.prototype.loadAllGames = function () {
 GameManager.prototype.loadGame = function (id) {
   var self = this;
   var url = '/load-game/' + id;
-  $.get(url)
-  .done(function (data) {
-    self.setup(data.state);
-  });
+  var r = confirm("Are you sure?\nAny unsaved games will be lost.");
+  if (r === true) {
+    $.get(url)
+    .done(function (data) {
+      self.setup(data.state);
+    });
+  }
 };
 
 // delete a saved game
