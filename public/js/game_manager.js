@@ -17,7 +17,10 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
 // Restart the game
 GameManager.prototype.restart = function () {
-  var r = confirm("Are you sure?\nAny unsaved games will be lost.");
+  var r = true;
+  if (this.over === false) {
+    r = confirm("Are you sure?\nAny unsaved games will be lost.");
+  }
   if (r === true) {
     this.storageManager.clearGameState();
     this.actuator.continueGame(); // Clear the game won/lost message
