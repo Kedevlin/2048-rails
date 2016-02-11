@@ -8,8 +8,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
-  this.inputManager.on("save", this.save.bind(this));
-  this.inputManager.on("loadAllGames", this.loadAllGames.bind(this));
+  this.inputManager.on("save", this.save.bind(this))
   this.inputManager.on("loadGame", this.loadGame.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
 
@@ -43,16 +42,27 @@ GameManager.prototype.loadAllGames = function () {
   .done(function (data) {
     addGames(data);
   });
+
   var games = [];
   function addGames(input) {
     for (var i = 0; i < input.length; i++) {
       games.push(input[i]);
     }
+
     var savedGamesHTML = "";
     for (var j = 0; j < games.length; j++) {
-      savedGamesHTML += "<p id="+games[j].id+">Game with score: " + games[j].state.score +
-      " <a class=\"load-game-button\">Load</a>" +
-      " <a class=\"delete-game-button\">Delete</a></p>";
+
+      // parsing Date for human readbility
+      var date = new Date(games[j].created_at);
+      var month = date.getMonth();
+      var day = date.getDate();
+      var year = date.getFullYear();
+
+      savedGamesHTML += "<div class='saved-game' id=" + games[j].id + ">Score: " 
+      + games[j].state.score + 
+      "<br>Saved on:" + month + "/" + day + "/" + year + 
+      "<br><a class=\"load-game-button\">Load</a>" + 
+      "<br><a class=\"delete-game-button\">Delete</a></div>";
     }
     $(".saved-games").html(savedGamesHTML);
     $(".load-game-button").click(function(){
@@ -62,7 +72,6 @@ GameManager.prototype.loadAllGames = function () {
       self.deleteGame(event.target.parentElement.id);
     });
   }
-
 };
 
 // Load particular game to start playing
@@ -72,7 +81,7 @@ GameManager.prototype.loadGame = function (id) {
   $.get(url)
   .done(function (data) {
     self.setup(data.state);
-  });
+  }); 
 };
 
 // delete a saved game
@@ -210,6 +219,9 @@ GameManager.prototype.actuate = function () {
   });
   // updating the Leaderboard when board is updated
   this.updateLeaderboard();
+
+  // update saved games that are loaded
+  this.loadAllGames();
 };
 
 // Represent the current game as an object

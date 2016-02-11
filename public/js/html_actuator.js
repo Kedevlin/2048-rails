@@ -135,10 +135,11 @@ HTMLActuator.prototype.message = function (won) {
 HTMLActuator.prototype.updateLeaderboard = function (leaders) {
   var leaderHTML = "";
   for (var i = 0; i < leaders.length; i++) {
-    leaderHTML += '<div class="leader"> / <strong> Leader ID: ' + leaders[i].uid + '</strong> -- score: ' + leaders[i].high_score + ' /  </div>';
+    leaderHTML += '<div class="leader"><strong> Leader ID: ' + leaders[i].uid + '</strong><br>score: ' + leaders[i].high_score + '</div><br>';
   }
   $('.leaderboard').html(leaderHTML);
 };
+
 
 HTMLActuator.prototype.clearMessage = function () {
   // IE only takes one value to remove at a time.

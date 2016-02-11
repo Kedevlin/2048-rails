@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def require_login
+    if !@current_user
+      redirect_to '/auth/github'
+    end
+  end
+
 end
