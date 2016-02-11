@@ -2,6 +2,7 @@
   position: absolute;
   margin: 0 auto;
   width: 1000px;
+  padding: 10%;
 }
 
 body {
@@ -28,7 +29,7 @@ body {
 .leaderboard-container {
   display: inline-block;
   position: relative;
-  bottom: 400px;
+  bottom: 420px;
   right: 30px;
   width: 175px;
   text-align: right;

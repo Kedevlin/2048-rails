@@ -135,7 +135,7 @@ HTMLActuator.prototype.message = function (won) {
 HTMLActuator.prototype.updateLeaderboard = function (leaders) {
   var leaderHTML = "";
   for (var i = 0; i < leaders.length; i++) {
-    leaderHTML += '<div class="leader"><strong> Leader ID: ' + leaders[i].uid + '</strong><br>score: ' + leaders[i].high_score + '</div><br>';
+    leaderHTML += '<div class="leader"><strong> Leader ID: ' + leaders[i].uid + '</strong><p class="leader-score">score: ' + leaders[i].high_score + '</p></div><br>';
   }
   $('.leaderboard').html(leaderHTML);
 };

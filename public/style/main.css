@@ -2,6 +2,7 @@
 html, body {
   margin: 0;
   padding: 0;
+
   background: #faf8ef;
   color: #776e65;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
@@ -597,10 +598,16 @@ hr {
     }
 .leaderboard {
   margin-top: 10px;
+  padding-left: 5%;
 }
 
 .leader {
-/*  display: inline-block;*/
+  font-size: medium;
+  text-align: left;
+}
+
+.leader-score {
+  padding-left: 5%;
 }
 
 
