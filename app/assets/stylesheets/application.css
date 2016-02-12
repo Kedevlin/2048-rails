@@ -1,6 +1,8 @@
 .app-container {
+  position: absolute;
   margin: 0 auto;
   width: 1000px;
+  padding: 10%;
 }
 
 body {
@@ -27,28 +29,31 @@ body {
 .leaderboard-container {
   display: inline-block;
   position: relative;
-  bottom: 400px;
+  bottom: 450px;
   right: 30px;
-  width: 175px;
+  width: 250px;
   text-align: right;
 }
 
 .leaderboard {
+  margin-top: 10px;
+  padding-left: 5%;
   text-align: right;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .saved-games-container {
   display: inline-block;
   width: 175px;
   position: relative;
-  bottom: 400px;
+  bottom: 380px;
   left: 30px;
 }
 
 .saved-game {
   text-align: left;
   font-size: 20px;
+  padding-left: 10.5%;
 }
 
 .display-game {

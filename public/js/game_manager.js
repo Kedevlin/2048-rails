@@ -17,7 +17,10 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
 // Restart the game
 GameManager.prototype.restart = function () {
-  var r = confirm("Are you sure?\nAny unsaved games will be lost.");
+  var r = true;
+  if (this.over === false) {
+    r = confirm("Are you sure?\nAny unsaved games will be lost.");
+  }
   if (r === true) {
     this.storageManager.clearGameState();
     this.actuator.continueGame(); // Clear the game won/lost message
@@ -69,11 +72,11 @@ GameManager.prototype.loadAllGames = function () {
       var month = date.getMonth();
       var day = date.getDate();
       var year = date.getFullYear();
-      savedGamesHTML += "<div class='saved-game' id=" + games[j].id + 
-      "><strong>Score:</strong> " 
-      + games[j].state.score + 
-      "<br>" + month + "/" + day + "/" + year + 
-      "<br><a class=\"load-game-button\">Load</a>" + 
+      savedGamesHTML += "<div class='saved-game' id=" + games[j].id +
+      "><strong>Score:</strong> "
+      + games[j].state.score +
+      "<br>" + month + "/" + day + "/" + year +
+      "<br><a class=\"load-game-button\">Load</a>" +
       " / <a class=\"delete-game-button\">Delete</a></div><br>";
     }
     $(".saved-games").html(savedGamesHTML);

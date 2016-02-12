@@ -2,6 +2,7 @@
 html, body {
   margin: 0;
   padding: 0;
+
   background: #faf8ef;
   color: #776e65;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
@@ -530,7 +531,14 @@ hr {
   text-align: center;
   float: right; }
 
+  h3 {
+    padding-top: 30%;
+  }
+
 .save-button {
+  position: absolute;
+  left: 12px;
+  top: 0px;
   display: inline-block;
   background: #8f7a66;
   border-radius: 3px;
@@ -543,60 +551,7 @@ hr {
   display: block;
   text-align: center;
   float: right; }
-
-.load-all-button {
-  /*display: inline-block;
-  background: #8f7a66;
-  border-radius: 3px;
-  padding: 0 20px;
-  margin-top 10px;
-  text-decoration: none;
-  color: #f9f6f2;
-  height: 40px;
-  line-height: 42px;
-  display: block;
-  text-align: center;
-  float: right;*/
-}
-
-  .load-game-button {
-    /*display: inline-block;
-    background: #8f7a66;
-    border-radius: 3px;
-    padding: 0 20px;
-    margin-top 10px;
-    text-decoration: none;
-    color: #f9f6f2;
-    height: 40px;
-    line-height: 42px;
-    display: block;
-    text-align: center;
-    float: right;*/
-  }
-
-    .delete-game-button {
-      /*display: inline-block;
-      background: #8f7a66;
-      border-radius: 3px;
-      padding: 0 20px;
-      margin-top 10px;
-      text-decoration: none;
-      color: #f9f6f2;
-      height: 40px;
-      line-height: 42px;
-      display: block;
-      text-align: center;
-      float: right;*/
-    }
-.leaderboard {
-  margin-top: 10px;
-}
-
-.leader {
-/*  display: inline-block;*/
-}
-
-
+  
 .game-explanation {
   margin-top: 50px; }
 

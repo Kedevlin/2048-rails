@@ -5,18 +5,26 @@ class UsersController < ApplicationController
       :state => params["state"],
       )
     game.user_id = @current_user.id
-    game.save
+    render :json => { :errors => game.errors } if !game.save  
     redirect_to root_path
   end
 
   def load_all_games
     games = current_user.games.order("created_at DESC").limit(3)
-    render :json => games
+    if games
+      render :json => games
+    else
+      render :json => [], :status => :no_content
+    end
   end
 
   def load_game
     game = Game.find(params[:id])
-    render :json => game, :only => :state
+    if game
+      render :json => game, :only => :state
+    else
+      render :json => [], :status => :no_content
+    end
   end
 
   def delete_game
@@ -24,15 +32,23 @@ class UsersController < ApplicationController
 
   def best_score
     score = @current_user.high_score if @current_user
-    score = 0 if score.nil? 
-    render :json => score
+    score = 0 if score.nil?
+    if score
+      render :json => score
+    else
+      render :json => [], :status => :no_content
+    end
   end
 
   def new_best_score
     score = params[:score]
     @current_user.high_score = score
     @current_user.save
-    render :json => score
+    if score
+      render :json => score
+    else
+      render :json => [], :status => :no_content
+    end
   end
 
 end
