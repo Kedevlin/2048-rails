@@ -33,8 +33,13 @@ GameManager.prototype.save = function () {
     {
       state: currentState
     }
-  );
-  alert("Game is saved!");
+  )
+  .done(function () {
+    alert("Game is saved!");
+  })
+  .fail(function  () {
+    alert("Game was not saved!");
+  });
 };
 
 // Load list of all saved games to choose one to play
@@ -45,6 +50,9 @@ GameManager.prototype.loadAllGames = function () {
   $.get(url)
   .done(function (data) {
     addGames(data);
+  })
+  .fail(function  () {
+    console.log('Fail!');
   });
 
   var games = [];
@@ -90,6 +98,9 @@ GameManager.prototype.loadGame = function (id) {
     $.get(url)
     .done(function (data) {
       self.setup(data.state);
+    })
+    .fail(function  () {
+      console.log('Fail!');
     });
   }
 };
@@ -98,11 +109,14 @@ GameManager.prototype.loadGame = function (id) {
 GameManager.prototype.deleteGame = function (id) {
   var url = '/delete-game/' + id;
   $.ajax({
-   url: url,
-   type: 'DELETE',
-   success: function() {
-     $('#' + id).remove();
-   }
+    url: url,
+    type: 'DELETE',
+    success: function () {
+      $('#' + id).remove();
+    },
+    fail: function () {
+      console.log("There was a problem deleting your game.");
+    }
   });
 
 };
@@ -115,6 +129,9 @@ GameManager.prototype.updateLeaderboard = function () {
   $.get(url)
   .done(function (data) {
     self.actuator.updateLeaderboard(data);
+  })
+  .fail(function  () {
+    console.log("Couldn't load the leaderboard.");
   });
 };
 
@@ -201,13 +218,10 @@ GameManager.prototype.actuate = function () {
     if (scoreData < self.score) {
       self.storageManager.setBestScore(self.score);
     }
+  })
+  .fail(function () {
+    console.log("Couldn't load the best score.")
   });
-
-  // OLD CODE
-  //
-  // if (this.storageManager.getBestScore() < this.score) {
-  //   this.storageManager.setBestScore(this.score);
-  // }
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
